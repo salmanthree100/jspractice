@@ -601,7 +601,7 @@ const aliceInChains = {
       // for (const [index, song] of Object.entries(assignObj.songsList)) {
       //    songNames.push(song.name);
       // }
-
+      ``;
       // return `These songs: ${songNames.join(", ")} are all great by the singer ${this.singer}`;
    },
 };
@@ -617,3 +617,96 @@ const aliceSongs = {
 };
 
 console.log(aliceInChains.getSongs());
+
+// nullish coalescing operator
+
+let mambo = "Kid";
+let jambo;
+
+let mamboJambo = mambo ?? jambo;
+
+console.log(mamboJambo);
+
+const ask = (question, yes, no) => {
+   try {
+      if (confirm(question)) yes();
+      else no();
+   } catch (error) {
+      console.log(error.message);
+   }
+};
+
+ask(
+   "Are you dumb?",
+   () => console.log("You agreed."),
+   () => console.log("You disagreed."),
+);
+
+camelize;
+
+function camelize(str) {
+   return str
+      .split("-") // splits 'my-long-word' into array ['my', 'long', 'word']
+      .map(
+         // capitalizes first letters of all array items except the first one
+         // converts ['my', 'long', 'word'] into ['my', 'Long', 'Word']
+         (word, index) =>
+            index == 0 ? word : word[0].toUpperCase() + word.slice(1),
+      )
+      .join(""); // joins ['my', 'Long', 'Word'] into 'myLongWord'
+}
+
+console.log(camelize("dumb-bitch-be-sayin"));
+
+// Remove duplicates
+function removeDuplicates(...array) {
+   // rest operator used in to pass array as parameter
+   console.log(array.filter((a, b) => array.indexOf(a) === b).join("\n"));
+   return array.filter((a, b) => array.indexOf(a) === b).join("\n");
+}
+
+removeDuplicates(
+   "salman",
+   "farhan",
+   "salman",
+   "fidan",
+   "turkey",
+   "jiggly",
+   "turkey",
+);
+
+// filter range
+
+function filterRange(arr, a, b) {
+   // added brackets around the expression for better readability
+   return arr.filter((item) => a <= item && item <= b);
+}
+
+let arr = [5, 3, 8, 1];
+
+let filtered = filterRange(arr, 1, 4);
+
+console.log(filtered); // 3,1 (matching values)
+
+console.log(arr); // 5,3,8,1 (not modified)
+
+let arrStr = ["HTML", "JavaScript", "CSS"];
+
+function copySorted(arrStr) {
+   let copyArrStr = [...arrStr]; // used spread operator to copy the array values
+   return copyArrStr.sort((a, b) => (a > b ? 1 : -1));
+}
+
+let sorted = copySorted(arrStr);
+
+console.log(sorted); // CSS, HTML, JavaScript
+console.log(arrStr); // HTML, JavaScript, CSS (no changes)
+
+const str = "3 + 7";
+const [a, b] = str.split("+").map(Number);
+
+const add = a + b;
+
+console.log(typeof add); // number
+console.log(add); // 10
+
